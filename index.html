@@ -63,10 +63,11 @@
     }
     #gradesList {
         margin-top: 15px;
+        overflow-x: auto; /* Scroll أفقي دائم */
     }
     table {
         width: 100%;
-        max-width: 100%;
+        min-width: 400px; /* يمنع انكماش الجدول على الهاتف */
         border-collapse: collapse;
         direction: rtl;
     }
@@ -94,7 +95,7 @@
     }
     @media screen and (max-width: 600px) {
         table, th, td {
-            font-size: 14px;
+            font-size: 13px; /* تصغير الخط على الهواتف */
         }
     }
 </style>
