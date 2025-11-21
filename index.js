@@ -5,6 +5,7 @@ function showGrades() {
     const gradesList = document.getElementById("gradesList");
     const encouragement = document.getElementById("encouragement");
 
+    // إعادة تهيئة المحتوى
     status.innerHTML = "";
     studentName.innerHTML = "";
     gradesList.innerHTML = "";
