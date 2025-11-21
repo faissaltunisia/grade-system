@@ -31,7 +31,9 @@ function showGrades() {
                     }
                 }
                 html += "</table>";
-                gradesList.innerHTML = html;
+
+                // غلف الجدول بصندوق Scroll أفقي
+                gradesList.innerHTML = `<div style="overflow-x:auto;">${html}</div>`;
 
                 encouragement.innerHTML = "نتمنى لك التوفيق والنجاح! 🌟 حافظ على الاجتهاد وحقق أعلى النتائج!";
             } else {
