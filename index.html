@@ -2,20 +2,101 @@
 <html lang="ar">
 <head>
 <meta charset="UTF-8">
-<title>عرض درجات الطالب</title>
+<title>درجات الطالب - صلالة الشرقية</title>
+<style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(to right, #f9f9f9, #e0f7fa);
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    header {
+        background-color: #00796b;
+        color: white;
+        padding: 20px;
+    }
+    header h1 {
+        margin: 5px;
+        font-size: 28px;
+    }
+    header h2 {
+        margin: 5px;
+        font-size: 18px;
+        font-weight: normal;
+    }
+    .container {
+        padding: 20px;
+        max-width: 600px;
+        margin: auto;
+        background-color: white;
+        border-radius: 12px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        margin-top: 20px;
+    }
+    input, button {
+        padding: 10px;
+        font-size: 16px;
+        margin: 5px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+    }
+    button {
+        background-color: #00796b;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #004d40;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+    table, th, td {
+        border: 1px solid #00796b;
+    }
+    th, td {
+        padding: 8px;
+        text-align: center;
+    }
+    th {
+        background-color: #004d40;
+        color: white;
+    }
+    .message {
+        margin-top: 15px;
+        font-size: 16px;
+        color: #00796b;
+        font-weight: bold;
+    }
+    #status {
+        color: red;
+        margin-top: 10px;
+    }
+</style>
 <script src="index.js"></script>
 </head>
-<body style="font-family: Arial; padding: 20px; direction: rtl; text-align: right">
+<body>
 
-<h2>ادخل رقمك المدني لمعرفة درجاتك</h2>
+<header>
+    <h1>صلالة الشرقية للتعليم الأساسي</h1>
+    <h2>الفصل الدراسي الأول 2025-2026</h2>
+</header>
 
-<input type="text" id="civil" placeholder="الرقم المدني" />
-<button onclick="showGrades()">عرض الدرجات</button>
+<div class="container">
+    <h2>ادخل رقمك المدني لمعرفة درجاتك</h2>
+    <input type="text" id="civil" placeholder="الرقم المدني">
+    <br>
+    <button onclick="showGrades()">عرض الدرجات</button>
+    <p id="status"></p>
 
-<h3 id="studentName"></h3>
-<div id="gradesList"></div>
-
-<p id="status" style="color: red; margin-top: 10px;"></p>
+    <h3 id="studentName"></h3>
+    <div id="gradesList"></div>
+    <p class="message" id="encouragement"></p>
+</div>
 
 </body>
 </html>
