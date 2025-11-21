@@ -61,11 +61,15 @@
     button:hover {
         background-color: #004d40;
     }
+    #gradesList {
+        overflow-x: auto; /* يسمح بالتمرير الأفقي على الهواتف */
+        margin-top: 15px;
+    }
     table {
         width: 100%;
+        max-width: 100%;
         border-collapse: collapse;
-        margin-top: 15px;
-        direction: rtl;
+        direction: rtl; /* الاسم على اليمين */
     }
     table, th, td {
         border: 1px solid #00796b;
@@ -73,6 +77,7 @@
     th, td {
         padding: 8px;
         text-align: right;
+        word-wrap: break-word; /* لفك الكلمات الطويلة */
     }
     th {
         background-color: #004d40;
@@ -87,6 +92,11 @@
     #status {
         color: red;
         margin-top: 10px;
+    }
+    @media screen and (max-width: 600px) {
+        table, th, td {
+            font-size: 14px; /* تصغير حجم الخط على الهواتف */
+        }
     }
 </style>
 <script src="index.js"></script>
