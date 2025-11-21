@@ -15,6 +15,16 @@
         background-color: #00796b;
         color: white;
         padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+    header img {
+        width: 80px;
+        height: auto;
+        border-radius: 10px;
     }
     header h1 {
         margin: 5px;
@@ -24,6 +34,7 @@
         margin: 5px;
         font-size: 18px;
         font-weight: normal;
+        width: 100%;
     }
     .container {
         padding: 20px;
@@ -54,14 +65,14 @@
         width: 100%;
         border-collapse: collapse;
         margin-top: 15px;
-        direction: rtl; /* يجعل الاسم على اليمين */
+        direction: rtl;
     }
     table, th, td {
         border: 1px solid #00796b;
     }
     th, td {
         padding: 8px;
-        text-align: right; /* الاسم على اليمين */
+        text-align: right;
     }
     th {
         background-color: #004d40;
@@ -83,8 +94,11 @@
 <body>
 
 <header>
-    <h1>صلالة الشرقية للتعليم الأساسي</h1>
-    <h2>الفصل الدراسي الأول 2025-2026</h2>
+    <img src="https://raw.githubusercontent.com/faissaltunisia/grades-system/main/logo.png" alt="لوجو المدرسة">
+    <div>
+        <h1>صلالة الشرقية للتعليم الأساسي</h1>
+        <h2>الفصل الدراسي الأول 2025-2026</h2>
+    </div>
 </header>
 
 <div class="container">
