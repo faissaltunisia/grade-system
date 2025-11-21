@@ -1,0 +1,27 @@
+name: Convert Excel to JSON
+
+on:
+  push:
+    paths:
+      - 'data/grades.xlsx'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install xlsx fs-extra
+      - name: Convert Excel to JSON
+        run: node convert.js
+      - name: Commit JSON
+        run: |
+          git config --local user.name "github-actions"
+          git config --local user.email "actions@github.com"
+          git add grades.json
+          git commit -m "Update grades.json from Excel" || echo "No changes"
+          git push
