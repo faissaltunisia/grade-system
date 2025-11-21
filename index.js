@@ -5,7 +5,6 @@ function showGrades() {
     const gradesList = document.getElementById("gradesList");
     const encouragement = document.getElementById("encouragement");
 
-    // إعادة تهيئة المحتوى
     status.innerHTML = "";
     studentName.innerHTML = "";
     gradesList.innerHTML = "";
@@ -23,19 +22,38 @@ function showGrades() {
             if (student) {
                 studentName.innerHTML = `الطالب: ${student.name}`;
 
+                let total = 0;
+                let count = 0;
                 let html = "<table>";
-                html += "<tr><th>المادة</th><th>الدرجة</th></tr>";
+                html += "<tr><th>المادة</th><th>الدرجة</th><th>تحليل ونصيحة</th></tr>";
+
                 for (const key in student) {
                     if (key !== "civil" && key !== "name") {
-                        html += `<tr><td>${key}</td><td>${student[key]}</td></tr>`;
+                        let grade = parseFloat(student[key]);
+                        let advice = "";
+
+                        if (grade >= 90) advice = "ممتاز! حافظ على هذا المستوى.";
+                        else if (grade >= 75) advice = "جيد جدًا، ركز على مراجعة النقاط الصعبة.";
+                        else if (grade >= 50) advice = "مقبول، يحتاج المزيد من الممارسة.";
+                        else advice = "ضعيف، ننصح بمراجعة الدروس مع المعلم.";
+
+                        html += `<tr><td>${key}</td><td>${grade}</td><td>${advice}</td></tr>`;
+                        total += grade;
+                        count++;
                     }
                 }
-                html += "</table>";
 
-                // غلف الجدول بصندوق Scroll أفقي
+                html += "</table>";
                 gradesList.innerHTML = `<div style="overflow-x:auto;">${html}</div>`;
 
-                encouragement.innerHTML = "نتمنى لك التوفيق والنجاح! 🌟 حافظ على الاجتهاد وحقق أعلى النتائج!";
+                let average = total / count;
+                let generalAdvice = "";
+                if (average >= 90) generalAdvice = "ممتاز! استمر على هذا المستوى الرائع 🌟";
+                else if (average >= 75) generalAdvice = "جيد جدًا! ركز على المواد التي تحتاج تعزيزًا 💪";
+                else if (average >= 50) generalAdvice = "مقبول، تحتاج لمزيد من الاجتهاد والمراجعة 📚";
+                else generalAdvice = "ينصح بمراجعة شاملة والدعم من المعلم 🔔";
+
+                encouragement.innerHTML = `<strong>متوسطك العام: ${average.toFixed(2)}</strong><br>${generalAdvice}`;
             } else {
                 status.innerHTML = "لم يتم العثور على الرقم المدني";
             }
