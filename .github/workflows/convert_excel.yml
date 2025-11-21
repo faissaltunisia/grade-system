@@ -1,5 +1,6 @@
 name: Convert Excel to JSON
 
+# تشغيل الـ Action عند أي تعديل على ملف grades.xlsx
 on:
   push:
     paths:
@@ -9,19 +10,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # سحب ملفات المشروع
       - uses: actions/checkout@v3
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+
+      # تثبيت Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          node-version: '18'
+          python-version: '3.x'
+
+      # تثبيت المكتبات اللازمة
       - name: Install dependencies
-        run: npm install xlsx fs-extra
+        run: pip install pandas openpyxl
+
+      # تحويل Excel إلى JSON
       - name: Convert Excel to JSON
-        run: node convert.js
-      - name: Commit JSON
-        run: |
-          git config --local user.name "github-actions"
-          git config --local user.email "actions@github.com"
-          git add grades.json
-          git commit -m "Update grades.json from Excel" || echo "No changes"
-          git push
+        run: python .github/scripts/convert_excel.py
+
+      # عرض رسالة نجاح
+      - name: Done
+        run: echo "grades.xlsx converted to grades.json successfully!"
